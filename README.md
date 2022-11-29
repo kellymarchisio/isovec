@@ -1,4 +1,15 @@
-# IsoVec
-Code for IsoVec: Controlling the Relative Isomorphism of Word Embedding Spaces (EMNLP 2022)
+IsoVec: Controlling the Relative Isomorphism of Word Embedding Spaces
+======================
 
-Coming soon!
+This is an implementation of the experiments and combination system presented
+in:
+- Kelly Marchisio, Neha Verma, Kevin Duh, Philipp Koehn. 2022. **[IsoVec: Controlling the Relative Isomorphism of Word Embedding Spaces
+](https://arxiv.org/abs/2210.05098)**. In *Proceedings of EMNLP 2022*.
+
+If you use this software for academic research, please cite the paper above.
+
+Requirements
+--------
+- python3
+- pytorch
+--------
