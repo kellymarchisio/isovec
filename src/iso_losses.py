@@ -13,8 +13,8 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import torch
+import sys
 from sklearn.preprocessing import normalize
-from scipy.spatial.distance import cosine
 
 FREQ = 5000
 HOMO_DIM = 1
@@ -157,9 +157,6 @@ def main():
     en_matrix = distance_matrix(en_freq, en_vec)
     de_matrix = distance_matrix(de_freq, de_vec)
 
-    # Step 2. Get the actual distance based on matrices and the
-    # persistance diagrams
-    print("Gromov-Hausdorff: ", compute_distance(en_matrix, de_matrix))
 
 # The code starts here
 if __name__=='__main__':

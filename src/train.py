@@ -17,7 +17,6 @@ import multiprocessing
 import numpy as np
 import os
 import random
-from scripts import make_qsub_command
 import subprocess
 import torch
 import torch.nn as nn
@@ -198,8 +197,6 @@ class SkipGramNS(nn.Module):
         # Maybe does more computation, though?
         #
         # https://github.com/LakheyM/word2vec/blob/master/word2vec_SGNS_git.ipynb
-        # inner_products = torch.sum(torch.mul(
-        #     context_vectors, target_vectors), dim=1).reshape(-1, 1)
         inner_products = torch.diagonal(
                 context_vectors @ target_vectors.T).reshape(-1, 1)
         return inner_products
@@ -400,7 +397,6 @@ def train(args, device, vocab, train_file, total_train_n, total_lines,
         ts_print('Approx Batches Per Epoch:',
                 round(approx_batches_per_epoch, 2))
         ts_print('Approx Total Batches:', round(approx_total_batches, 2))
-        # Decide whether we interpret --warmup as # steps or as % of all batches
         if args.warmup_type == 'steps':
             warmup_steps = min(args.warmup, MAX_WARMUP)
         else:
@@ -416,7 +412,6 @@ def train(args, device, vocab, train_file, total_train_n, total_lines,
                 lr_lambda=lin_warm_poly_decay)
 
     loaded_vecs = None
-    # this is basically just iso supervised. change later.
     if args.mode == 'supervised':
         print('Loading static word embeddings...', flush=True)
         # note - these vecs have been normed, mean-centered, normed.
@@ -427,9 +422,6 @@ def train(args, device, vocab, train_file, total_train_n, total_lines,
         all_src_seeds = [i[0] for i in all_seed_pairs]
         all_ref_seeds = [i[1] for i in all_seed_pairs]
 
-        # For debugging.
-        # available_seeds = ([(src, trg) for src, trg in
-        #     all_seed_pairs if src in vocab and trg in ref_word2idx])
         src_idxs_to_compare = [vocab[src] for src, trg in
             all_seed_pairs if src in vocab and trg in ref_word2idx]
         src_used_list = [src for src, trg in
@@ -519,24 +511,7 @@ def train(args, device, vocab, train_file, total_train_n, total_lines,
                     # Source: https://www.stat.cmu.edu/~larry/=sml/Opt.pdf p. 5, 12
                     iso_loss_unscaled = torch.linalg.norm(model_vecs_tmp - loaded_vecs)
                     iso_loss = iso_loss_unscaled / len(loaded_vecs)
-                elif args.loss == 'gh':
-                    # Gromov-Hausdorff Loss.
-                    # this torch.sqrt/torch.clamp etc code is modeled on
-                    # https://github.com/cambridgeltl/iso-study/blob/master/scripts/gh_script.py
-                    # epsilon use: https://discuss.pytorch.org/t/avoiding-a-sqrt-to-0-values-is-breaking-the-backpropagation/57373/2
-                    epsilon = 1.e-8
-                    loaded_dist = torch.sqrt(2 - 2 * torch.clamp(torch.mm(loaded_vecs,
-                        torch.t(loaded_vecs)), -1., 1.) + epsilon)
-                    model_dist = torch.sqrt(2 - 2 * torch.clamp(torch.mm(model_vecs_tmp,
-                        torch.t(model_vecs_tmp)), -1., 1.) + epsilon)
-                    iso_loss = iso.compute_distance(loaded_dist, model_dist, device=device)
-                elif args.loss == 'rs':
-                    iso_loss = iso.diffble_rs_distance(model_vecs_tmp,
-                            loaded_vecs, device, args.mode == 'unsupervised')
                 elif args.loss == 'evs':
-                    # TODO: Check - does EVS care whether we're in supervised or
-                    # unsup mode?  Is there a computational limit to how many
-                    # vecs we can use?
                     iso_loss = iso.diffble_evs_distance(model_vecs_tmp,
                             loaded_vecs, device)
                 last_k_iso_losses.append(iso_loss.item())
@@ -569,7 +544,6 @@ def train(args, device, vocab, train_file, total_train_n, total_lines,
                 ts_print('Avg SG loss', round(
                     sum(last_k_sg_losses) / len(last_k_sg_losses), 4), flush=True)
 
-            #breakpoint()
             loss.backward()
             batches_seen += 1
             examples_seen += len(context_idxs)

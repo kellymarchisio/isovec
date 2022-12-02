@@ -12,4 +12,17 @@ Requirements
 --------
 - python3
 - pytorch
+- sklearn
+- scipy
+- numpy
 --------
+
+Setup
+-------
+- download third party packages: `sh third_party/get_third_party.sh`
+
+Usage
+-------
+
+
+Description and code to come!
