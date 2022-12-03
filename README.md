@@ -15,6 +15,7 @@ Requirements
 - sklearn
 - scipy
 - numpy
+- indicnlp (for Tamil and Bengali tokenizers)
 --------
 
 Setup

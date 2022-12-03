@@ -17,8 +17,6 @@ export VECMAP=$DIR/third_party/vecmap_fork
 export WORD2VEC=$DIR/third_party/word2vec/word2vec
 export ISOSTUDY_SCRIPTS=`pwd`/third_party/iso_study_fork/scripts
 export GRID=CLSP
-export OMP_NUM_THREADS=12
-export MLM_100_TOKENIZER=/home/kmarc/fairseq-m2m_100-tok
 
 echo 'TEMPDIR is: ' $TEMPDIR
 echo You are running in this environment: $CONDA_PREFIX
