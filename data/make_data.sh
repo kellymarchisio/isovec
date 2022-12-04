@@ -88,7 +88,7 @@ xzcat $CC_DATA | head -100000000 \
 # Indic Languages.
 # Downloading tokenizer script from m2m100:
 
-wget https://github.com/facebookresearch/fairseq/blob/main/examples/m2m_100/tokenizers/tokenize_indic.py
+wget https://raw.githubusercontent.com/facebookresearch/fairseq/main/examples/m2m_100/tokenizers/tokenize_indic.py
 
 
 for lang in ta bn
