@@ -1,12 +1,14 @@
 #!/bin/bash
 
+# This script downloads all necessary monolingual data, and trims them to the amount used in the experiments
+
 . ../local-settings.sh
 
 STD_DATA=newscrawl-mono
 mkdir -p $STD_DATA
 
 #################
-# Downloading data
+# Downloading newscrawl data
 cd $STD_DATA
 LANGS="uk ta bn en"
 echo "Download WMT monolingual data"
@@ -20,7 +22,7 @@ done
 cd ..
 
 #################
-# Germanic & Romance Languages.
+# Ukrainian
 for lang in uk 
 do
 	head -200 $STD_DATA/$lang/news.2020.$lang.shuffled.deduped \
@@ -70,7 +72,7 @@ ln -s news.2018-20.en.normtok.lc.full news.2018-20.en.tok.full
 
 
 #################
-# Downloading data
+# Downloading commoncrawl data
 wget -c https://data.statmt.org/wmt19/parallel-corpus-filtering/commoncrawl.deduped.en.xz
 
 CC_DATA=commoncrawl.deduped.en.xz
@@ -89,7 +91,6 @@ xzcat $CC_DATA | head -100000000 \
 # Downloading tokenizer script from m2m100:
 
 wget https://raw.githubusercontent.com/facebookresearch/fairseq/main/examples/m2m_100/tokenizers/tokenize_indic.py
-
 
 for lang in ta bn
 do
