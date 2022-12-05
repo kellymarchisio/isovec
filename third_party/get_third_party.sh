@@ -12,5 +12,5 @@ cd word2vec && make && cd ..
 # Convert vectors to bin format for monolingual eval
 git clone https://github.com/marekrei/convertvec.git
 
-wget https://github.com/facebookresearch/fairseq/blob/main/examples/m2m_100/tokenizers/tokenize_indic.py
+
 

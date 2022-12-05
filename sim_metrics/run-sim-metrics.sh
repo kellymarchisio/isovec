@@ -14,7 +14,7 @@ do
 		REF_EMBS=$OUTDIR/en/embs.out
 		for metric in evs rsim gh
 		do
-			sh qsub-sim-metrics.sh $lang en $SRC_EMBS $REF_EMBS $metric $OUTDIR
+			sh sim-metrics.sh $lang en $SRC_EMBS $REF_EMBS $metric
 		done
 	done
 done
@@ -33,7 +33,7 @@ do
 			REF_EMBS=exps/baseline/10/en/embs.out
 			for metric in evs rsim gh
 			do
-				sh qsub-sim-metrics.sh $lang en $SRC_EMBS $REF_EMBS $metric $OUTDIR
+				sh sim-metrics.sh $lang en $SRC_EMBS $REF_EMBS $metric
 			done
 		done
 	done
@@ -55,7 +55,7 @@ do
 		REF_EMBS=$OUTDIR/en.mapped.sup
 		for metric in evs rsim gh
 		do
-			sh qsub-sim-metrics.sh $lang en $SRC_EMBS $REF_EMBS $metric $OUTDIR
+			sh sim-metrics.sh $lang en $SRC_EMBS $REF_EMBS $metric
 		done
 	done
 done
@@ -74,7 +74,7 @@ do
 		REF_EMBS=$EXPDIR/test/en.mapped.semisup
 		for metric in evs rsim gh
 		do
-			sh qsub-sim-metrics.sh $lang en $SRC_EMBS $REF_EMBS $metric $OUTDIR
+			sh sim-metrics.sh $lang en $SRC_EMBS $REF_EMBS $metric
 		done
 	done
 done
@@ -95,7 +95,7 @@ do
 			REF_EMBS=$EXPDIR/mapped/en.mapped.semisup
 			for metric in evs rsim gh
 			do
-				sh qsub-sim-metrics.sh $lang en $SRC_EMBS $REF_EMBS $metric $OUTDIR
+				sh sim-metrics.sh $lang en $SRC_EMBS $REF_EMBS $metric 
 			done
 		done
 	done

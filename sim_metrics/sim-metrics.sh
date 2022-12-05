@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./local-settings.sh
+. ../local-settings.sh
 
 SRC=$1
 TRG=$2

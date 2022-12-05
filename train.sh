@@ -7,10 +7,10 @@
 ### This script has been written for use on the JHU CLSP Grid
 ###     -- Kelly Marchisio, Feb 2022.
 
-. ./local-settings-gpu.sh
+. ./local-settings.sh
 
 # https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts
-# t is the only letter left...
+
 while getopts "a:b:c:d:e:f:g:h:i:j:k:l:m:n:o:p:q:r:s:u:v:w:x:y:z:" opt; do
   case $opt in
     f) INFILE="$OPTARG"

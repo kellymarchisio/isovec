@@ -21,6 +21,7 @@ Requirements
 Setup
 -------
 - download third party packages: `sh third_party/get_third_party.sh`
+- download and make data: `cd data && sh make_data.sh`
 
 Usage
 -------

@@ -57,7 +57,7 @@ for year in 2018 2019; do
 	gunzip news.$year.en.shuffled.deduped.gz
 done
 
-cat news.2018.en.shuffled.deduped.gz news.2019.en.shuffled.deduped.gz news.2020.en.shuffled.deduped.gz > news.2018-2020.en.full
+cat news.2018.en.shuffled.deduped news.2019.en.shuffled.deduped news.2020.en.shuffled.deduped > news.2018-2020.en.full
 
 cd ../..
 
