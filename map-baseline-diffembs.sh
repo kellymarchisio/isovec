@@ -1,5 +1,5 @@
 #!/bin/bash -v
-. ./local-settings-gpu.sh
+. ./local-settings.sh
 
 set -x
 src_stage=$1

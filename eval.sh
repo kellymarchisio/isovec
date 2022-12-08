@@ -4,11 +4,9 @@
 ###
 ### Vecmap map embeddings.
 ###
-### This script has been written for use on the JHU CLSP Grid
 ###     -- Kelly Marchisio, Feb 2022.
 
-. ./local-settings-gpu.sh
-echo 'CUDA_VISIBLE_DEVICES is: ' $CUDA_VISIBLE_DEVICES
+. ./local-settings.sh
 
 # https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts
 while getopts "s:t:d:" opt; do

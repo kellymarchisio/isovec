@@ -487,36 +487,6 @@ elif [ $stage == evs10fU ]; then
 	MODE=unsupervised
 	GH_N=2000
 #######################################################
-# GH Exps.
-#######################################################
-elif [ $stage == gh00 ]; then
-	LOSS=gh
-	INFILE=data/news.2020.$LNG.tok.1k
-	MIXED_LOSS_START_BATCH=0
-	BETA=0.1
-	GH_N=100
-elif [ $stage == gh0 ]; then
-	LOSS=gh
-	MIXED_LOSS_START_BATCH=0
-	BETA=0.1
-	GH_N=1000 # This doesn't matter in supervised mode (which this is)
-	PRINT_FREQ=1
-	MAX_SEEDS=1000
-elif [ $stage == gh1 ]; then
-	LOSS=gh
-	MIXED_LOSS_START_BATCH=0
-	BETA=0.1
-	GH_N=1000 # This doesn't matter in supervised mode (which this is)
-	PRINT_FREQ=1
-	MAX_SEEDS=2000
-elif [ $stage == gh2 ]; then
-	LOSS=gh
-	MIXED_LOSS_START_BATCH=0
-	BETA=0.1
-	GH_N=1000 # This doesn't matter in supervised mode (which this is)
-	PRINT_FREQ=1
-	MAX_SEEDS=4000
-#######################################################
 # Diff Dom Exps, Diff Alg.
 #######################################################
 elif [ $stage == 10c-pwi-cc ]; then

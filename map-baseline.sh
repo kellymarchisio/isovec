@@ -1,5 +1,5 @@
 #!/bin/bash -v
-. ./local-settings-gpu.sh
+. ./local-settings.sh
 
 stage=$1
 SRC=$2
