@@ -25,13 +25,11 @@ cd ..
 # Ukrainian
 for lang in uk 
 do
-	head -200 $STD_DATA/$lang/news.2020.$lang.shuffled.deduped \
-		> news.2020.$lang.200
 
 	head -1000000 $STD_DATA/$lang/news.2020.$lang.shuffled.deduped \
 		> news.2020.$lang.1M
 
-	for size in 200 1M
+	for size in 1M
        	do
 		if [ $lang == uk ]; then
 			tok_lang=ru
@@ -94,13 +92,11 @@ wget https://raw.githubusercontent.com/facebookresearch/fairseq/main/examples/m2
 
 for lang in ta bn
 do
-	head -200 $STD_DATA/$lang/news.2020.$lang.shuffled.deduped \
-		> news.2020.$lang.200
 
 	head -1000000 $STD_DATA/$lang/news.2020.$lang.shuffled.deduped \
 		> news.2020.$lang.1M
 
-	for size in 1M 200
+	for size in 1M
 	do
 		cat news.2020.$lang.$size | python tokenize_indic.py \
 			$lang > news.2020.$lang.tok.$size

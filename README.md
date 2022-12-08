@@ -26,5 +26,8 @@ Setup
 Usage
 -------
 
+Baselines:
+- `sh baseline.sh {1,w2v,w2v-big,w2v-cc} {uk,bn,ta} {0,1,2,3,4}`
+
 
 Description and code to come!
