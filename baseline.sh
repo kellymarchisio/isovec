@@ -14,7 +14,7 @@ RAND_SEED=$3
 #
 ###############################################################################
 
-OUTDIR=exps/baseline/$stage$RAND_SEED/$LNG-en/
+OUTDIR=exps/baseline/$stage$RAND_SEED/$LNG/
 mkdir -p $OUTDIR
 
 DIM=300
