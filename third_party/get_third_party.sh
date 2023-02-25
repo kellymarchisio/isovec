@@ -8,7 +8,9 @@ wget https://raw.githubusercontent.com/kellymarchisio/align-semisup-bli/main/scr
 
 cd ..
 git clone https://github.com/tmikolov/word2vec.git
-cd word2vec && make && cd ..
+cd word2vec
+make
+cd ..
 # Convert vectors to bin format for monolingual eval
 git clone https://github.com/marekrei/convertvec.git
 

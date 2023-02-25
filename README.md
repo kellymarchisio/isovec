@@ -20,14 +20,12 @@ Requirements
 
 Setup
 -------
-- download third party packages: `sh third_party/get_third_party.sh`
+- download third party packages: `cd third_party && sh get_third_party.sh && cd ..`
 - download and make data: `cd data && sh make_data.sh`
 
 Usage
 -------
 
 Baselines:
-- `sh baseline.sh {1,w2v,w2v-big,w2v-cc} {uk,bn,ta} {0,1,2,3,4}`
+- `sh baseline.sh {w2v,w2v-big,w2v-cc} {uk,bn,ta} {0,1,2,3,4}`
 
-
-Description and code to come!
