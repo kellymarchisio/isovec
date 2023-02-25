@@ -2,7 +2,9 @@
 
 # This script downloads all necessary monolingual data, and trims them to the amount used in the experiments
 
-. ../local-settings.sh
+cd ..
+. ./local-settings.sh 
+cd data
 
 STD_DATA=newscrawl-mono
 mkdir -p $STD_DATA
@@ -55,12 +57,11 @@ for year in 2018 2019; do
 	gunzip news.$year.en.shuffled.deduped.gz
 done
 
-cat news.2018.en.shuffled.deduped news.2019.en.shuffled.deduped news.2020.en.shuffled.deduped > news.2018-2020.en.full
-
+cat news.2018.en.shuffled.deduped news.2019.en.shuffled.deduped news.2020.en.shuffled.deduped > news.2018-20.en.full
 cd ../..
 
 # Full English - Added 6 June 2022.
-cat $STD_DATA/$lang/news.2018-20.en.full \
+cat $STD_DATA/en/news.2018-20.en.full \
 	| $MOSES_SCRIPTS/tokenizer/normalize-punctuation.perl -l en \
 	| $MOSES_SCRIPTS/tokenizer/lowercase.perl \
 	| $MOSES_SCRIPTS/tokenizer/remove-non-printing-char.perl \
@@ -98,7 +99,7 @@ do
 
 	for size in 1M
 	do
-		cat news.2020.$lang.$size | python tokenize_indic.py \
+		cat news.2020.$lang.$size | python3 tokenize_indic.py \
 			$lang > news.2020.$lang.tok.$size
 	done
 done
