@@ -24,8 +24,8 @@ done
 cd ..
 
 #################
-# Ukrainian
-for lang in uk 
+# Germanic & Romance Languages
+for lang in en uk
 do
 
 	head -1000000 $STD_DATA/$lang/news.2020.$lang.shuffled.deduped \

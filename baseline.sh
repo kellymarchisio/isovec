@@ -33,7 +33,7 @@ set -x
 if [ $stage == w2v ]; then
     time $WORD2VEC -train $OUTDIR/train.tok -output $OUTDIR/embs.out -cbow 0 \
     	-size $DIM -window $WINDOW -negative $NEGATIVE \
-    	-hs 0 -iter 5 -min-count $MIN_COUNT
+    	-hs 0 -iter 5 -min-count $MIN_COUNT 2>&1 | tee $OUTDIR/log.txt
 elif [ $stage == isovec ]; then
 	WARMUP=0.25
 	WARMUP_TYPE=percent
@@ -42,7 +42,7 @@ elif [ $stage == isovec ]; then
     	-h $WARMUP_TYPE -j unsupervised \
     	-a $STARTING_ALPHA -k 0 -p Adam -u $WARMUP -q skipgram \
     	-r None -s None -v constant -x 1 -y $PRINT_FREQ \
-    	-z 0 -c $RAND_SEED -g 0 -e 0 #noop
+    	-z 0 -c $RAND_SEED -g 0 -e 0 2>&1 | tee $OUTDIR/log.txt
 else
 	echo Stage not recognized. Exiting. && exit
 fi

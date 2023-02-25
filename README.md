@@ -25,7 +25,9 @@ Setup
 - Download third party packages: `cd third_party && sh get_third_party.sh && cd ..`
     * Note: If you're on Mac with an M1 chip, word2vec might not build.  You can fix
     this by changing -march=native to **[-mcpu=apple-m1](https://stackoverflow.com/questions/65966969/why-does-march-native-not-work-on-apple-m1)**
-    in word2vec's makefile, and subbing in **[getc\_unlocked and putc\_unlocked](https://github.com/tmikolov/word2vec/pull/40)** for fgetc\_unlocked/fputc\_unlocked.
+    in word2vec's makefile, and subbing in **[getc\_unlocked and putc\_unlocked](https://github.com/tmikolov/word2vec/pull/40)** for
+    fgetc\_unlocked/fputc\_unlocked. You'll also need to use gshuf instead of
+    shuf within src/train.py.
 - Download and make data: `cd data && sh make_data.sh`
 
 Usage
