@@ -515,7 +515,7 @@ def train(args, device, vocab, train_file, total_train_n, total_lines,
                     iso_loss_unscaled = torch.linalg.norm(model_vecs_tmp - loaded_vecs)
                     iso_loss = iso_loss_unscaled / len(loaded_vecs)
                 elif args.loss == 'rs':
-                    iso_loss = gh.diffble_rs_distance(model_vecs_tmp,
+                    iso_loss = iso.diffble_rs_distance(model_vecs_tmp,
                             loaded_vecs, device, args.mode == 'unsupervised')
                 elif args.loss == 'evs':
                     iso_loss = iso.diffble_evs_distance(model_vecs_tmp,
