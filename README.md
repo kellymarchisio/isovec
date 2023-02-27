@@ -39,3 +39,11 @@ To reproduce Table 1 in the paper (Baselines), run:
     * For instance, run `sh baseline.sh w2v uk 0` for offical word2vec trained on Ukrainian.
     * system choices: {isovec, w2v}
     * lang choices: {uk, bn, ta, en}
+- Here is an example experiment for running Isovec:
+    * Goal: Train a Ukrainian embedding space with RSIM-U, in reference to a fixed English space.
+    * Step 1: Train the fixed English space with `sh baseline.sh isovec uk 0`
+    * Step 2: Train the Ukrainian space with: `sh run-isovec.sh rsim-u uk en 0`
+- Choices of Isovec training algorithm are `l2, proc-l2, proc-l2-init, rsim,
+  rsim-init, rsim-u, evs-u` for L2, Proc-L2, Proc-L2+Init, RSIM, RSIM-U, and
+  EVS-U as detailed in Section 4.3 and 4.4 of the paper. 
+
