@@ -29,6 +29,8 @@ Setup
     fgetc\_unlocked/fputc\_unlocked. You'll also need to use gshuf instead of
     shuf within src/train.py.
 - Download and make data: `cd data && sh make_data.sh`
+- Download and make train/dev/test dictionaries: `cd data/dicts && sh
+  create_dicts.sh`
 
 Usage
 -------
