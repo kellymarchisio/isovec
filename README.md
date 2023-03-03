@@ -44,13 +44,10 @@ To reproduce Table 1 in the paper (Baselines), run:
   `sh map-and-eval.sh baseline w2v uk en dev`
 	* Results will be in `exps/baseline/w2v/uk-en/*out`
 
-- Here is an example experiment for running Isovec in reference to a fixed
-  English embedding space:
-    * Goal: Train a Ukrainian embedding space with RSIM-U, in reference to a fixed English space.
-    * Step 1: Train the fixed English space with `sh baseline.sh isovec en`
-    * Step 2: Train the Ukrainian space with: `sh run-isovec.sh rsim-u uk en`
-	* Step 3: Map & Evaluate the spaces with: `sh map-and-eval.sh isovec rsim-u uk en dev`
-- Choices of Isovec training algorithm are `l2, proc-l2, proc-l2-init, rsim,
-  rsim-init, rsim-u, evs-u` for L2, Proc-L2, Proc-L2+Init, RSIM, RSIM-U, and
-  EVS-U as detailed in Section 4.3 and 4.4 of the paper.
+To run IsoVec in reference to a fixed embedding space (main experiments):
+- Example Goal: Train a Ukrainian embedding space with RSIM-U, in reference to a fixed English space.
+- Step 1: Train the fixed English space with `sh baseline.sh isovec en`
+- Step 2: Train the Ukrainian space with: `sh run-isovec.sh rsim-u uk en`
+	* Choices of Isovec training algorithm are `l2, proc-l2, proc-l2-init, rsim, rsim-init, rsim-u, evs-u` for L2, Proc-L2, Proc-L2+Init, RSIM, RSIM-U, and EVS-U as detailed in Section 4.3 and 4.4 of the paper.
+- Step 3: Map & Evaluate the spaces with: `sh map-and-eval.sh isovec rsim-u uk en dev`
 
