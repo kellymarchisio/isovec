@@ -5,16 +5,15 @@
 #
 # Combining Skipgram & Isomorphism Losses
 #   by Kelly Marchisio.
-# 
+#
 ###############################################################################
 
-stage=$1
+STAGE=$1
 LNG=$2
 REF_LNG=$3
-trial_num=$4
 
 EXP_NAME=isovec
-OUTDIR=exps/$EXP_NAME/$stage/$trial_num/$LNG-$REF_LNG
+OUTDIR=exps/$EXP_NAME/$STAGE/$LNG-$REF_LNG
 SEEDS=data/dicts/$LNG-$REF_LNG/train/$LNG-$REF_LNG.0-5000.txt
 TEST=data/dicts/$LNG-$REF_LNG/dev/$LNG-$REF_LNG.6501-8000.txt
 MAPPED_OUTDIR=$OUTDIR/mapped
@@ -30,7 +29,7 @@ WARMUP=0.25
 WARMUP_TYPE=percent
 STARTING_ALPHA=0.001
 INFILE=data/news.2020.$LNG.tok.1M
-REF_EMBS=$DIR/exps/baseline/isovec0/$REF_LNG/embs.out
+REF_EMBS=$DIR/exps/baseline/isovec/$REF_LNG/embs.out
 RAND_SEED=0 # To match with en space.
 LOSS=wass
 MODE=supervised
@@ -43,34 +42,34 @@ INIT_EMBS_W_REFS=0
 GH_N=10000
 MAX_SEEDS=-1 # All.
 
-if [ $stage == l2 ]; then
+if [ $STAGE == l2 ]; then
 	MIXED_LOSS_START_BATCH=0
 	BETA=0.1
-elif [ $stage == proc-l2 ]; then
+elif [ $STAGE == proc-l2 ]; then
 	LOSS=procwass
 	MIXED_LOSS_START_BATCH=0
 	BETA=0.333
-elif [ $stage == proc-l2-init ]; then
+elif [ $STAGE == proc-l2-init ]; then
 	LOSS=procwass
 	MIXED_LOSS_START_BATCH=0
 	BETA=0.2
 	INIT_EMBS_W_REFS=1
-elif [ $stage == rsim ]; then
+elif [ $STAGE == rsim ]; then
 	LOSS=rs
 	MIXED_LOSS_START_BATCH=0
 	BETA=0.01
-elif [ $stage == rsim-init ]; then
+elif [ $STAGE == rsim-init ]; then
 	LOSS=rs
 	MIXED_LOSS_START_BATCH=0
 	BETA=0.001
 	INIT_EMBS_W_REFS=1
-elif [ $stage == rsim-u ]; then
+elif [ $STAGE == rsim-u ]; then
 	LOSS=rs
 	MIXED_LOSS_START_BATCH=0
 	BETA=0.1
 	MODE=unsupervised
 	GH_N=2000
-elif [ $stage == evs-u ]; then
+elif [ $STAGE == evs-u ]; then
 	LOSS=evs
 	MIXED_LOSS_START_BATCH=0
 	BETA=0.333

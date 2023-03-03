@@ -16,7 +16,7 @@ Requirements
 - sklearn
 - scipy
 - numpy
-- indic-nlp-library 
+- indic-nlp-library
 - torchtext
 --------
 
@@ -36,14 +36,21 @@ Usage
 -------
 To reproduce Table 1 in the paper (Baselines), run:
 - `sh baseline.sh $system $lang $seed`
-    * For instance, run `sh baseline.sh w2v uk 0` for offical word2vec trained on Ukrainian.
+    * For instance, run `sh baseline.sh w2v uk` for offical word2vec trained on Ukrainian.
     * system choices: {isovec, w2v}
     * lang choices: {uk, bn, ta, en}
-- Here is an example experiment for running Isovec:
+- After you train English and Ukrainian baseline w2v spaces, for instance, you
+  can map them and evaluate the dictionary precision with:
+  `sh map-and-eval.sh baseline w2v uk en dev`
+	* Results will be in `exps/baseline/w2v/uk-en/*out`
+
+- Here is an example experiment for running Isovec in reference to a fixed
+  English embedding space:
     * Goal: Train a Ukrainian embedding space with RSIM-U, in reference to a fixed English space.
-    * Step 1: Train the fixed English space with `sh baseline.sh isovec uk 0`
-    * Step 2: Train the Ukrainian space with: `sh run-isovec.sh rsim-u uk en 0`
+    * Step 1: Train the fixed English space with `sh baseline.sh isovec en`
+    * Step 2: Train the Ukrainian space with: `sh run-isovec.sh rsim-u uk en`
+	* Step 3: Map & Evaluate the spaces with: `sh map-and-eval.sh isovec rsim-u uk en dev`
 - Choices of Isovec training algorithm are `l2, proc-l2, proc-l2-init, rsim,
   rsim-init, rsim-u, evs-u` for L2, Proc-L2, Proc-L2+Init, RSIM, RSIM-U, and
-  EVS-U as detailed in Section 4.3 and 4.4 of the paper. 
+  EVS-U as detailed in Section 4.3 and 4.4 of the paper.
 
