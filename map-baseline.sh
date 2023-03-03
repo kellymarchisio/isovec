@@ -10,11 +10,11 @@ SRC_EMBS=exps/baseline/$stage/$SRC/embs.out
 TRG_EMBS=exps/baseline/$stage/$TRG/embs.out
 MAPPED_OUTDIR=exps/baseline/$stage/$SRC-$TRG/$eval_on_test
 
-SEEDS=data/dicts/MUSE/$SRC-$TRG/train/$SRC-$TRG.0-5000.txt
+SEEDS=data/dicts/$SRC-$TRG/train/$SRC-$TRG.0-5000.txt
 if [[ -z "$eval_on_test" ]]; then
-	TEST=data/dicts/MUSE/$SRC-$TRG/dev/$SRC-$TRG.6501-8000.txt
+	TEST=data/dicts/$SRC-$TRG/dev/$SRC-$TRG.6501-8000.txt
 elif [[ $eval_on_test == test ]]; then
-	TEST=data/dicts/MUSE/$SRC-$TRG/test/$SRC-$TRG.5000-6500.txt
+	TEST=data/dicts/$SRC-$TRG/test/$SRC-$TRG.5000-6500.txt
 else
 	echo Please specify "test" to eval on test set, or nothing to eval on dev.
 	exit

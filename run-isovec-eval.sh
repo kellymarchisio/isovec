@@ -13,17 +13,17 @@ eval_on_test=$5
 # by Kelly Marchisio, Apr/May 2022.
 ###############################################################################
 
-EXP_NAME=real-isovec
+EXP_NAME=isovec
 OUTDIR=exps/$EXP_NAME/$stage/$trial_num/$LNG-$REF_LNG
-SEEDS=data/dicts/MUSE/$LNG-$REF_LNG/train/$LNG-$REF_LNG.0-5000.txt
+SEEDS=data/dicts/$LNG-$REF_LNG/train/$LNG-$REF_LNG.0-5000.txt
 MAPPED_OUTDIR=$OUTDIR/mapped
 REF_EMBS=$DIR/exps/baseline/10/$REF_LNG/embs.out
 mkdir -p $MAPPED_OUTDIR
 
 if [[ -z "$eval_on_test" ]]; then
-	TEST=data/dicts/MUSE/$LNG-$REF_LNG/dev/$LNG-$REF_LNG.6501-8000.txt
+	TEST=data/dicts/$LNG-$REF_LNG/dev/$LNG-$REF_LNG.6501-8000.txt
 elif [[ $eval_on_test == test ]]; then
-	TEST=data/dicts/MUSE/$LNG-$REF_LNG/test/$LNG-$REF_LNG.5000-6500.txt
+	TEST=data/dicts/$LNG-$REF_LNG/test/$LNG-$REF_LNG.5000-6500.txt
 else
 	echo Please specify "test" to eval on test set, or nothing to eval on dev.
 	exit

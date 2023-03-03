@@ -15,8 +15,8 @@ trial_num=$4
 
 EXP_NAME=isovec
 OUTDIR=exps/$EXP_NAME/$stage/$trial_num/$LNG-$REF_LNG
-SEEDS=data/dicts/MUSE/$LNG-$REF_LNG/train/$LNG-$REF_LNG.0-5000.txt
-TEST=data/dicts/MUSE/$LNG-$REF_LNG/dev/$LNG-$REF_LNG.6501-8000.txt
+SEEDS=data/dicts/$LNG-$REF_LNG/train/$LNG-$REF_LNG.0-5000.txt
+TEST=data/dicts/$LNG-$REF_LNG/dev/$LNG-$REF_LNG.6501-8000.txt
 MAPPED_OUTDIR=$OUTDIR/mapped
 mkdir -p $OUTDIR
 
