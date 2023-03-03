@@ -43,9 +43,7 @@ do
 			| $MOSES_SCRIPTS/tokenizer/lowercase.perl \
 			| $MOSES_SCRIPTS/tokenizer/remove-non-printing-char.perl \
 			| $MOSES_SCRIPTS/tokenizer/tokenizer.perl -a -l $tok_lang \
-				-threads 12 > news.2020.$lang.normtok.lc.$size
-		ln -s news.2020.$lang.normtok.lc.$size \
-			news.2020.$lang.tok.$size
+				-threads 12 > news.2020.$lang.tok.$size
 	done
 done
 
@@ -66,8 +64,7 @@ cat $STD_DATA/en/news.2018-20.en.full \
 	| $MOSES_SCRIPTS/tokenizer/lowercase.perl \
 	| $MOSES_SCRIPTS/tokenizer/remove-non-printing-char.perl \
 	| $MOSES_SCRIPTS/tokenizer/tokenizer.perl -a -l en \
-		-threads 12 > news.2018-20.en.normtok.lc.full
-ln -s news.2018-20.en.normtok.lc.full news.2018-20.en.tok.full
+		-threads 12 > news.2018-20.en.tok.full
 
 
 #################
